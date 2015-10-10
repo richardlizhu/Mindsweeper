@@ -24,7 +24,7 @@
 <script>
 
 var width = 960,
-    height = 900;
+    height = 500;
 
 var force = d3.layout.force()
     .size([width, height])
@@ -49,23 +49,24 @@ d3.json("graph2.json", function(error, graph) {
   var edges = [];
   var keys = Object.keys(graph);
   for (var i = 0; i < Object.keys(graph).length; i++) {
-    nodes.push({"name": keys[i]});
+    nodes.push({"x": keys[i]});
+  }
+  for (var i = 0; i < Object.keys(graph).length; i++) {
     for (item in graph[keys[i]]) {
-        nodes.push({"name": graph[keys[i]][item]});
-        edges.push({"source": i, "target": edges.length+1});
+        nodes.push({"x": graph[keys[i]][item]});
+        edges.push({"source": i, "target": edges.length+1+i});
     }
   }   
-  alert(JSON.stringify(edges));  
   force
       .nodes(nodes)
       .links(edges)
       .start();
 
-  link = link.data(graph.links)
+  link = link.data(edges)
     .enter().append("line")
       .attr("class", "link");
 
-  node = node.data(graph.nodes)
+  node = node.data(nodes)
     .enter().append("circle")
       .attr("class", "node")
       .attr("r", 12)
