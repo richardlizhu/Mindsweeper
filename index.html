@@ -42,7 +42,7 @@ var svg = d3.select("body").append("svg")
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
-d3.json("graph2.json", function(error, graph) {
+d3.json("graph.json", function(error, graph) {
   if (error) throw alert("error");
 
   var nodes = [];
@@ -54,9 +54,12 @@ d3.json("graph2.json", function(error, graph) {
   for (var i = 0; i < Object.keys(graph).length; i++) {
     for (item in graph[keys[i]]) {
         nodes.push({"x": graph[keys[i]][item]});
-        edges.push({"source": i, "target": edges.length+1+i});
+        edges.push({"source": i, "target": edges.length+keys.length});
     }
   }   
+
+  alert(JSON.stringify(nodes));
+  alert(JSON.stringify(edges));
   force
       .nodes(nodes)
       .links(edges)
