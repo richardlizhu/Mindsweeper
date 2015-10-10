@@ -13,5 +13,8 @@
     ],
     "js": ["content.js"]
   }
-]
+],
+ "permissions": [
+    "https://*/"
+  ]
 }
