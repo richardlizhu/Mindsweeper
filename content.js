@@ -1,3 +1,8 @@
+//var Firebase = require('firebase');
+//alert(typeof Firebase);
+//var dataRef = new Firebase('https://blownupbyamind.firebaseio.com/');
+//dataRef.set("hello world!");
+
 var crawl = function(url)
 {
 var xhr = new XMLHttpRequest();
@@ -16,21 +21,6 @@ else
 	return (result);
 }
 }
-
-
-function makefile(){
-  var fso;
-  var thefile;
-
-    fso = new ActiveXObject("Scripting.FileSystemObject");
-    thefile=fso.CreateTextFile("C:\\tmp\\MyFile.txt",true);
-
-    thefile.close()
-    }
-
-
-
-
 
 
 var crawlUrl = window.location.href;
@@ -59,5 +49,27 @@ for (i=1;i<jsonArray.length;i++)
 		links.pop();
 	}
 var toAdd = {
-	json[key] = links;
+	title : title,
+	id : num, 
+	links : links
+}
+//myFirebaseRef.set(toAdd);
+
+
+
+window.onbeforeunload = function() {
+    return "I hope you were mentally stimulated by this Wikipedia page!";
+};
+
+
+
+var random = function(completeList)
+{
+	var n = completeList;
+	randomArray = []
+	for (i = 0; i < 10; i++)
+	{
+		randomArray[i] = Math.floor(n * Math.random());
+	}
+	return randomArray;
 }
