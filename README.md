@@ -1,2 +1,2 @@
 # Mindsweeper
-Wikipedia data visualization
+Wikipedia data visualization.
