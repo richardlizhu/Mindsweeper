@@ -9,10 +9,24 @@ var result = xhr.responseText;
 var resultJSON = JSON.parse(result);
 if (resultJSON.continue && resultJSON.continue.plcontinue !== "")
 {
-	crawl(url+"&plcontinue="+resultJSON.continue.plcontinue);
+	return result + "$#@$#@&^%" + crawl(url+"&plcontinue="+resultJSON.continue.plcontinue);
 }
-	return (resultJSON);
+else
+{
+	return (result);
 }
+}
+
+
+function makefile(){
+  var fso;
+  var thefile;
+
+    fso = new ActiveXObject("Scripting.FileSystemObject");
+    thefile=fso.CreateTextFile("C:\\tmp\\MyFile.txt",true);
+
+    thefile.close()
+    }
 
 
 
@@ -22,4 +36,28 @@ if (resultJSON.continue && resultJSON.continue.plcontinue !== "")
 var crawlUrl = window.location.href;
 crawlUrl = crawlUrl.substring(crawlUrl.lastIndexOf("/")+1);
 crawlUrl = "https://en.wikipedia.org/w/api.php?action=query&titles=" + crawlUrl + "&prop=links&pllimit=max&rvprop=content&format=json";
-var json = crawl(crawlUrl);
+var jsonText = crawl(crawlUrl);
+
+var jsonTextArray = jsonText.split("$#@$#@&^%");
+var jsonArray = [];
+for (i =0;i < jsonTextArray.length; i++)
+{
+	jsonArray.push(JSON.parse(jsonTextArray[i]));
+} 
+var numPre = jsonArray[0].query.pages;
+var num = Object.keys(numPre);
+var title=numPre[num].title;
+//var num = Object.keys jsonArray
+var links = numPre[num].links;
+for (i=1;i<jsonArray.length;i++)
+{
+	var temp = jsonArray[i].query.pages[num].links;
+	links = links.concat(temp);
+}
+	while(links[links.length-1].ns !== 0)
+	{
+		links.pop();
+	}
+var toAdd = {
+	json[key] = links;
+}
