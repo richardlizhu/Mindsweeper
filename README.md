@@ -1,0 +1,2 @@
+# Mindsweeper
+Wikipedia data visualization
