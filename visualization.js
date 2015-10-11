@@ -1,3 +1,6 @@
+
+function draw(graph) {
+
 var width = window.screen.width,
     height = window.screen.height;
 
@@ -18,7 +21,7 @@ var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
 //graphs = stringJSON.split("&$^^#%$%$#&");
-graph = /*JSON.parse(graphs);*/ {"a" : ["c","d","e"], "b":["a","g","h"]};
+//graph = /*JSON.parse(graphs);*/{"a" : ["c","d","e"], "b":["a","g","h"]};
   var nodes = [];
   var edges = [];
   var skip = false;
@@ -30,7 +33,9 @@ graph = /*JSON.parse(graphs);*/ {"a" : ["c","d","e"], "b":["a","g","h"]};
   for (var i = 0; i < Object.keys(graph).length; i++) {
     for (item in graph[keys[i]]) { 
        for (var j = 0; j < keys.length; j++) {
-           if ((graph[keys[i]][item]).toLowerCase() == (keys[j]).toLowerCase()) {
+            var c = graph[keys[i]][item];
+            var b = (keys[j])
+            if (c == b) {  
                 edges.push({"source": j, "target": i});
                 skip = true;
                 num_skipped++;
@@ -82,6 +87,7 @@ function dblclick(d) {
 function dragstart(d) {
   d3.select(this).classed("fixed", d.fixed = true);
 }
+
 
 var crawl = function(url){
   var xhr = new XMLHttpRequest();

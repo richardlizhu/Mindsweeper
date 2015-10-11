@@ -3,7 +3,8 @@
 //var dataRef = new Firebase('https://blownupbyamind.firebaseio.com/');
 //dataRef.set("hello world!");
 
-alert("faffer");
+
+
 var crawl = function(url)
 {
 var xhr = new XMLHttpRequest();
@@ -23,6 +24,9 @@ else
 }
 } 
 
+
+var database = [];
+var cumulator = 0;
 
 window.onload = function() {
   
@@ -65,20 +69,14 @@ for (i=0;i<50; i++)
 	linksReal.push(links[Math.floor(links.length*Math.random())])
 }
 var toAdd = {
-	title : "https://en.wikipedia.org/wiki/" + title,
-	id : num, 
-	links : linksReal
-}
+
+	title : title,
+	//id : num, 
+	links : links
+};
 
 
-var toAdd2 = {
-	title : title
-}
-
-
-
-
-var getCache()
+function getCache()
 {
 	var tempLocal = localStorage.cumVar;
 	localStorage.clear();
@@ -86,26 +84,24 @@ var getCache()
 }
 
 
-alert(localStorage.cumVar);
+//alert(localStorage.cumVar);
 if(localStorage.cumVar)
 {
-	alert("cumvar");
-	localStorage.cumVar.push("@$^^#%$%$#&"+toAdd);
+	//alert("cumvar");
+	localStorage.cumVar += "@$^^#%$%$#&"+toAdd;
 }
 else
 {
-	alert("no cumvar");
+	//alert("no cumvar");
 	localStorage.cumVar = JSON.stringify(toAdd);
 }
-alert(localStorage.cumVar);
+//alert(localStorage.cumVar);
 
 
 
 window.onbeforeunload = function() {
-	var currentPage = window.location.href;
-	currentPage = currentPage.substring(currentPage.indexOf("/wiki/") + 6);
-	var readFile("./interest.json", currentPage);
 
+    chrome.runtime.sendMessage({data: JSON.stringify(toAdd)});
     return "I hope you were mentally stimulated by this Wikipedia page!";
 };
 
@@ -113,7 +109,7 @@ window.onbeforeunload = function() {
 
 var random = function(completeList)
 {
-	var n = completeList.length;
+	var n = completeList;
 	randomArray = []
 	for (i = 0; i < 10; i++)
 	{
@@ -121,7 +117,6 @@ var random = function(completeList)
 	}
 	return randomArray;
 }
-
 
 
 var relatedButton = function(completeList)
