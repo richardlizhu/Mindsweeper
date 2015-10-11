@@ -12,6 +12,6 @@ console.log("message sent");
 port.onMessage.addListener(function(msg) {
   // See other examples for sample onMessage handlers.
   console.log("extension message received");
-graph = JSON.parse(msg);
+graph = msg;
 draw(graph);
 });
