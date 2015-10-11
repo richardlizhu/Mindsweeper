@@ -3,10 +3,6 @@
   "version": "1.0",
   "description": "Browse Wikipedia with Intelligence.",
   "manifest_version": 2,
-  "browser_action": {
-    "default_popup": "index.html",
-    "default_icon": "icon.png"
-  },
 "externally_connectable": {
   "matches": ["*://www.andrew.cmu.edu/user/jyxia/*"]
 },
@@ -18,6 +14,9 @@
     "js": ["content.js"]
   }
 ],
+"background": {
+    "scripts": ["background.js"]
+},
  "permissions": [
     "https://*/",
     "storage",

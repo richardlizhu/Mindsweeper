@@ -4,6 +4,7 @@
 //dataRef.set("hello world!");
 
 
+
 var crawl = function(url)
 {
 var xhr = new XMLHttpRequest();
@@ -58,12 +59,12 @@ for (i=1;i<jsonArray.length;i++)
 	}
 var toAdd = {
 	title : title,
-	id : num, 
+	//id : num, 
 	links : links
-}
+};
 
 
-var getCache()
+function getCache()
 {
 	var tempLocal = localStorage.cumVar;
 	localStorage.clear();
@@ -71,22 +72,23 @@ var getCache()
 }
 
 
-alert(localStorage.cumVar);
+//alert(localStorage.cumVar);
 if(localStorage.cumVar)
 {
-	alert("cumvar");
-	localStorage.cumVar.push("@$^^#%$%$#&"+toAdd);
+	//alert("cumvar");
+	localStorage.cumVar += "@$^^#%$%$#&"+toAdd;
 }
 else
 {
-	alert("no cumvar");
+	//alert("no cumvar");
 	localStorage.cumVar = JSON.stringify(toAdd);
 }
-alert(localStorage.cumVar);
+//alert(localStorage.cumVar);
 
 
 
 window.onbeforeunload = function() {
+    chrome.runtime.sendMessage({data: JSON.stringify(toAdd)});
     return "I hope you were mentally stimulated by this Wikipedia page!";
 };
 

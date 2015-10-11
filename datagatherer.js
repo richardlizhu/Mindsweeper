@@ -1,15 +1,17 @@
-var stringJSON;
+//document.addEventListener('visibilitychange', function() {
+//    getData();
+//})
 
-function getData() {
+var graph={};
+
 // The ID of the extension we want to talk to.
 var editorExtensionId = "pfjicihngnbhjmjafeomgmennngngeio";
-
-// Make a simple request:
-chrome.runtime.sendMessage(editorExtensionId, {openUrlInEditor: url},
-  function(response) {
-    if (!response.success)
-      handleError(url);
-
-    stringJSON = response;
-  });
-}
+var port = chrome.runtime.connect(editorExtensionId);
+port.postMessage("hi from webpage");
+console.log("message sent");
+port.onMessage.addListener(function(msg) {
+  // See other examples for sample onMessage handlers.
+  console.log("extension message received");
+graph = JSON.parse(msg);
+draw(graph);
+});

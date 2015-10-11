@@ -1,10 +1,13 @@
+
+function draw(graph) {
+
 var width = window.screen.width,
     height = window.screen.height;
 
 var force = d3.layout.force()
     .size([width, height])
-    .charge(-400)
-    .linkDistance(40)
+    .charge(-10)
+    .linkDistance(10)
     .on("tick", tick);
 
 var drag = force.drag()
@@ -18,7 +21,7 @@ var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
 //graphs = stringJSON.split("&$^^#%$%$#&");
-graph = /*JSON.parse(graphs);*/ {"a" : ["c","d","e"], "b":["a","g","h"]};
+//graph = /*JSON.parse(graphs);*/{"a" : ["c","d","e"], "b":["a","g","h"]};
   var nodes = [];
   var edges = [];
   var skip = false;
@@ -30,7 +33,9 @@ graph = /*JSON.parse(graphs);*/ {"a" : ["c","d","e"], "b":["a","g","h"]};
   for (var i = 0; i < Object.keys(graph).length; i++) {
     for (item in graph[keys[i]]) { 
        for (var j = 0; j < keys.length; j++) {
-           if ((graph[keys[i]][item]).toLowerCase() == (keys[j]).toLowerCase()) {
+            var c = graph[keys[i]][item];
+            var b = (keys[j])
+            if (c == b) {  
                 edges.push({"source": j, "target": i});
                 skip = true;
                 num_skipped++;
@@ -83,39 +88,4 @@ function dragstart(d) {
   d3.select(this).classed("fixed", d.fixed = true);
 }
 
-var crawl = function(url){
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", url, false);
-  xhr.send();
-  var result = xhr.responseText;
-  var resultJSON = JSON.parse(result);
-  if (resultJSON.continue && resultJSON.continue.plcontinue !== ""){
-    return result + "$#@$#@&^%" + crawl(url+"&plcontinue="+resultJSON.continue.plcontinue);
-  }
-  else{
-   return (result);
-  }
-} 
-
-var random = function(completeList)
-{
-  var n = completeList;
-  randomArray = []
-  for (i = 0; i < 10; i++)
-  {
-    randomArray[i] = Math.floor(n * Math.random());
-  }
-  return randomArray;
-}
-
-var Firebase = require('firebase');
-var dataRef = new Firebase('https://blownupbyamind.firebaseio.com/');
-dataRef.set("hello worlsdfsdfdsfdssuccessfd!");
-
-window.onbeforeunload = function() {
-    return "I hope you were mentally stimulated by this Wikipedia page!";
-};
-
-window.onload = function() {
-  alert('hi!');
 }
