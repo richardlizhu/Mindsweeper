@@ -77,7 +77,6 @@ boolean tempStop = false;
 
 void setup()
 {
-  //size(600,850);
 
   clearValues();
   
@@ -89,9 +88,6 @@ void setup()
   /* the address of the osc broadcast server */
   myBroadcastLocation = new NetAddress(broadcastIP, broadcastPort);
   
-//  smFont = createFont("", 20);
-//  bigFont = createFont("", 40);
-//  textFont(bigFont);
   
   prepareExitHandler();
   connectOscClient();
@@ -113,27 +109,6 @@ void draw2()
   {
     return;
   }
-  //background(255);
-  //noStroke();
-  
-  //textFont(bigFont);
-  //fill(255,0,0);
-  
-  //text("MUSE", 50,50);
-  
-  //textFont(smFont);
-  //fill(0);
-//  int x1 = 50;
-//  int x2 = x1+250;
-//  int y1 = 100;
-//  r
-//  // muse
-//  text("battery", x1, y1+=20);
-//  text(museBattery + " %", x2, y1);
-//  y1+=20;
-//  text("status_indicator", x1, y1+=20);
-//  text(museStatus[0] + " " + museStatus[1] + " " + museStatus[2] + " " + museStatus[3], x2, y1);
-//  
   float beta = 0;
   float gamma = 0;
   float Lbeta = 0;
@@ -166,33 +141,12 @@ void draw2()
     BetaMedian = listofLBeta[24];
     GammaMedian = listofLGamma[24];
 
-    //display
-//    text("Beta", 50, 325);
-//    text(runBeta/50, 100, 350);
-//    text("Gamma", 50, 375);
-//    text(runGamma/50, 100, 400);
-//    text("LBeta", 50, 425);
-//    text(runLBeta/50, 100, 450);
-//    text("LGamma", 50, 475);
-//    text(runLGamma/50, 100, 500);
-//    text("LBetaMedian", 50, 525);
-//    text(BetaMedian, 100, 550);
-//    text("LGammaMedian", 50, 575);
-//    text(GammaMedian, 100, 600);
     
     //save values
     oldRunBeta = runBeta/50.0;
     oldRunGamma = runGamma/50.0;
     oldRunLBeta = runLBeta/50.0;
-    oldRunLGamma = runLGamma/50.0;
-    
-    
-    // Printing for Shell-based-UI
-//    print("Beta", oldRunBeta,"\n");
-//    print("Gamma",oldRunGamma,"\n");
-//    print("LBeta",oldRunLBeta,"\n");
-//    print("LGamma",oldRunLGamma,"\n");
-    
+    oldRunLGamma = runLGamma/50.0;   
     
     //reset
     runBeta = 0;
@@ -257,8 +211,8 @@ void draw2()
       averageLBeta = totalLBeta / totalCount;
       averageLGamma = totalLGamma / totalCount;
       
-      calcValueB = log(exp(BetaInit - averageBeta)/3+2*exp(LBetaInit - averageLBeta)/3);
-      calcValueG = log(exp(GammaInit - averageGamma)/3+2*exp(LGammaInit - averageLGamma)/3);
+      calcValueB = log(exp(BetaInit - averageBeta)/2+exp(LBetaInit - averageLBeta)/3);
+      calcValueG = log(exp(GammaInit - averageGamma)/2+exp(LGammaInit - averageLGamma)/3);
       
       calcValueB = ((calcValueB / 4) + .5 ) * 100;
       calcValueG = ((calcValueG / 4) + .5 ) * 100;
@@ -268,37 +222,12 @@ void draw2()
       calcValueG = (calcValueG - 40)*2.5;
       
       interest = new JSONObject();
-      interest.setFloat("avgB", averageBeta);
-      interest.setFloat("initB", BetaInit);
-      interest.setFloat("avgG", averageGamma);
-      interest.setFloat("initG", GammaInit);
-      interest.setFloat("avgLB", averageLBeta);
-      interest.setFloat("initLB", LBetaInit);
-      interest.setFloat("avgLG", averageLGamma);
-      interest.setFloat("initLG", LGammaInit);
-      interest.setFloat("calcB", calcValueB);
-      interest.setFloat("calcG", calcValueG);
-      saveJSONObject(interest, "test.json");
+      interest.setFloat("Interest", calcValueB);
+      interest.setFloat("Concentration", calcValueG);
+      saveJSONObject(interest, "interest.json");
       tempStop = false;
     }
   }
- 
-  
-  
-  
-  //fix flashing issue
-//    text("Beta", 50, 325);
-//    text(oldRunBeta, 100, 350);
-//    text("Gamma", 50, 375);
-//    text(oldRunGamma, 100, 400);
-//    text("LBeta", 50, 425);
-//    text(oldRunLBeta, 100, 450);
-//    text("LGamma", 50, 475);
-//    text(oldRunLGamma, 100, 500);
-//    text("LBetaMedian", 50, 525);
-//    text(BetaMedian, 100, 550);
-//    text("LGammaMedian", 50, 575);
-//    text(GammaMedian, 100, 600);  
 }
   
   
