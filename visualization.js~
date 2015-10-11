@@ -1,6 +1,3 @@
-//draw({})
-function draw(graph) {
-
 var width = window.screen.width,
     height = window.screen.height;
 
@@ -20,8 +17,8 @@ var svg = d3.select("body").append("svg")
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
-//graphs = stringJSON.split("&$^^#%$%$#&");
-//graph = /*JSON.parse(graphs);*/{"a" : ["c","d","e"], "b":["a","g","h"]};
+graphs = stringJSON.split("&$^^#%$%$#&");
+graph = JSON.parse(graphs); //{"a" : ["c","d","e"], "b":["a","g","h"]};
   var nodes = [];
   var edges = [];
   var skip = false;
@@ -33,9 +30,7 @@ var link = svg.selectAll(".link"),
   for (var i = 0; i < Object.keys(graph).length; i++) {
     for (item in graph[keys[i]]) { 
        for (var j = 0; j < keys.length; j++) {
-            var c = graph[keys[i]][item];
-            var b = (keys[j])
-            if (c == b) {  
+           if ((graph[keys[i]][item]).toLowerCase() == (keys[j]).toLowerCase()) {
                 edges.push({"source": j, "target": i});
                 skip = true;
                 num_skipped++;
@@ -61,18 +56,10 @@ var link = svg.selectAll(".link"),
     .enter().append("line")
       .attr("class", "link");
 
-var page = window.location.href;
-
   node = node.data(nodes)
     .enter().append("circle")
       .attr("class", "node")
       .attr("r", 12)
-      /*.style("fill", function(i) { 
-            var x = (readfile("./new_muse_final/interest.json", page)[0])[1]; //rgb color
-            var r = x[0]>>>4;
-            var g = x[1]>>>4;
-            var b = x[2]>>>4;
-                })*/
       .on("dblclick", dblclick)
       .call(drag);
 
@@ -96,7 +83,6 @@ function dragstart(d) {
   d3.select(this).classed("fixed", d.fixed = true);
 }
 
-
 var crawl = function(url){
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url, false);
@@ -114,7 +100,7 @@ var crawl = function(url){
 var random = function(completeList)
 {
   var n = completeList;
-  randomArray = []     
+  randomArray = []
   for (i = 0; i < 10; i++)
   {
     randomArray[i] = Math.floor(n * Math.random());
@@ -126,23 +112,10 @@ var Firebase = require('firebase');
 var dataRef = new Firebase('https://blownupbyamind.firebaseio.com/');
 dataRef.set("hello worlsdfsdfdsfdssuccessfd!");
 
-
-
 window.onbeforeunload = function() {
     return "I hope you were mentally stimulated by this Wikipedia page!";
 };
 
 window.onload = function() {
   alert('hi!');
-}
-
-
-var fs  = require("fs");
-function readfile (path, page){
-  var fileText = fs.readFileSync(path).toString();
-  alert(fileText);
-  fileText = JSON.parse(fileText);
-  return ({page: colorCreate(fileText)});
-  var interest = fileText.interest;
-  var concentration = fileText.concentration;
 }

@@ -72,7 +72,7 @@ var toAdd = {
 
 	title : title,
 	//id : num, 
-	links : links
+	links : linksReal
 };
 
 
@@ -93,7 +93,7 @@ if(localStorage.cumVar)
 else
 {
 	//alert("no cumvar");
-	localStorage.cumVar = JSON.stringify(toAdd);
+	localStorage.cumVar = toAdd;
 }
 //alert(localStorage.cumVar);
 
@@ -101,7 +101,7 @@ else
 
 window.onbeforeunload = function() {
 
-    chrome.runtime.sendMessage({data: JSON.stringify(toAdd)});
+    chrome.runtime.sendMessage({data: toAdd});
     return "I hope you were mentally stimulated by this Wikipedia page!";
 };
 
