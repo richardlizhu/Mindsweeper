@@ -107,7 +107,7 @@ window.onbeforeunload = function() {
 
 
 
-var random = function(completeList)
+var randomR = function(completeList)
 {
 	var n = completeList;
 	randomArray = []
@@ -119,16 +119,16 @@ var random = function(completeList)
 }
 
 
-var relatedButton = function(completeList)
+var relatedButton = function(listOfNeighbors, listOfVisitedNodes)
 {
-	randomArray = random(completeList);
-	functionForRichard(randomArray, getGood(completeList), function(answer) { alert(answer)}) ;
+	randomArray = randomR(listOfNeighbors);
+	functionForRichard(randomArray, getGood(listOfVisitedNodes), function(answer) { alert(answer)}) ;
 }
 
 
-var getGood = function(completeList)
+var getGood = function(listOfVisitedNodes)
 {
-	return completeList.slice(0,20);
+	return listOfVisitedNodes.slice(0,5);
 }
 
 
