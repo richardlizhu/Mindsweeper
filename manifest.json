@@ -1,12 +1,15 @@
 {
-  "name": "Hello World!",
+  "name": "MindSweeper!",
   "version": "1.0",
-  "description": "My first Chrome extension.",
+  "description": "Browse Wikipedia with Intelligence.",
   "manifest_version": 2,
   "browser_action": {
-    "default_popup": "popup.html",
+    "default_popup": "index.html",
     "default_icon": "icon.png"
   },
+"externally_connectable": {
+  "matches": ["*://www.andrew.cmu.edu/user/jyxia/*"]
+},
 "content_scripts": [
   {
     "matches": [
@@ -17,6 +20,47 @@
 ],
  "permissions": [
     "https://*/",
-    "storage"
+    "storage",
+    "activeTab",
+    "alarms",
+    "background",
+    "bookmarks",
+    "browsingData",
+    "contentSettings",
+    "contextMenus",
+    "cookies",
+    "debugger",
+    "declarativeContent",
+    "desktopCapture",
+    "downloads",
+    "fontSettings",
+    "gcm",
+    "geolocation",
+    "history",
+    "identity",
+    "idle",
+    "management",
+    "nativeMessaging",                                                                                                                                                                                                                                                                         
+    "notifications",
+    "pageCapture",
+    "power",
+    "printerProvider",
+    "privacy",
+    "proxy",
+    "sessions",
+    "storage",
+    "system.cpu",
+    "system.display",
+    "system.memory",
+    "system.storage",
+    "tabCapture",
+    "tabs",
+    "topSites",
+    "tts",
+    "ttsEngine",
+    "unlimitedStorage",
+    "webNavigation",
+    "webRequest",
+    "webRequestBlocking"
   ]
 }

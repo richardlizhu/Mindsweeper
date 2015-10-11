@@ -3,6 +3,7 @@
 //var dataRef = new Firebase('https://blownupbyamind.firebaseio.com/');
 //dataRef.set("hello world!");
 
+
 var crawl = function(url)
 {
 var xhr = new XMLHttpRequest();
@@ -20,8 +21,15 @@ else
 {
 	return (result);
 }
-}
+} 
 
+
+var database = [];
+var cumulator = 0;
+
+window.onload = function() {
+  
+}
 
 var crawlUrl = window.location.href;
 crawlUrl = crawlUrl.substring(crawlUrl.lastIndexOf("/")+1);
@@ -53,7 +61,28 @@ var toAdd = {
 	id : num, 
 	links : links
 }
-//myFirebaseRef.set(toAdd);
+
+
+var getCache()
+{
+	var tempLocal = localStorage.cumVar;
+	localStorage.clear();
+	return tempLocal;
+}
+
+
+alert(localStorage.cumVar);
+if(localStorage.cumVar)
+{
+	alert("cumvar");
+	localStorage.cumVar.push("@$^^#%$%$#&"+toAdd);
+}
+else
+{
+	alert("no cumvar");
+	localStorage.cumVar = JSON.stringify(toAdd);
+}
+alert(localStorage.cumVar);
 
 
 
@@ -73,3 +102,4 @@ var random = function(completeList)
 	}
 	return randomArray;
 }
+
