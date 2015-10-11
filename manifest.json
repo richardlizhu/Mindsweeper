@@ -8,7 +8,7 @@
     "default_icon": "icon.png"
   },
 "externally_connectable": {
-  "matches": ["*://*.mindsweepr.com/*"]
+  "matches": ["*://www.andrew.cmu.edu/user/jyxia/*"]
 },
 "content_scripts": [
   {
