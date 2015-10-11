@@ -114,8 +114,8 @@ var random = function(completeList)
 	for (i = 0; i < 10; i++)
 	{
 		randomArray[i] = Math.floor(n * Math.random());
-	}
-	return randomArray;
+	
+}	return randomArray;
 }
 
 
