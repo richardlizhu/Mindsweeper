@@ -1,6 +1,6 @@
 
 runningList = [["Apples",20],["Transistors",70]]
-neighbors = ["Bananas","Quantum Computing"]
+neighbors = ["Bananas","Quantum Computing", "Zero", "Battle of Britain"]
 
 
 var sortByPref = function(runningList){
