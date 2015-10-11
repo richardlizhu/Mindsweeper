@@ -3,7 +3,7 @@
 //var dataRef = new Firebase('https://blownupbyamind.firebaseio.com/');
 //dataRef.set("hello world!");
 
-
+alert("faffer");
 var crawl = function(url)
 {
 var xhr = new XMLHttpRequest();
@@ -23,9 +23,6 @@ else
 }
 } 
 
-
-var database = [];
-var cumulator = 0;
 
 window.onload = function() {
   
@@ -94,7 +91,7 @@ window.onbeforeunload = function() {
 
 var random = function(completeList)
 {
-	var n = completeList;
+	var n = completeList.length;
 	randomArray = []
 	for (i = 0; i < 10; i++)
 	{
@@ -103,3 +100,16 @@ var random = function(completeList)
 	return randomArray;
 }
 
+
+
+var relatedButton = function(completeList)
+{
+	randomArray = random(completeList);
+	functionForRichard(randomArray, getGood(completeList), function(answer) { alert(answer)}) ;
+}
+
+
+var getGood = function(completeList)
+{
+	return completeList.slice(0,20);
+}
