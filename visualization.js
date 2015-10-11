@@ -6,8 +6,8 @@ var width = window.screen.width,
 
 var force = d3.layout.force()
     .size([width, height])
-    .charge(-10)
-    .linkDistance(10)
+    .charge(-400)
+    .linkDistance(40)
     .on("tick", tick);
 
 var drag = force.drag()

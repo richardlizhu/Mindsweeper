@@ -9,7 +9,7 @@
 // of overall enjoyment will allow Jon to sort the wiki Titles by enjoyment.
 
 var colorCreate = function(json){
-	var engagement = json["engagement"];
+	var engagement = json["concentration"];
 	var interest   = json["interest"];
 	if (engagement < 0){
 		engagement = 0;
