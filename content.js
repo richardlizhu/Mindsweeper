@@ -53,11 +53,29 @@ for (i=1;i<jsonArray.length;i++)
 	{
 		links.pop();
 	}
-var toAdd = {
-	title : title,
-	id : num, 
-	links : links
+
+
+
+
+
+
+var linksReal = [];
+for (i=0;i<50; i++)
+{
+	linksReal.push(links[Math.floor(links.length*Math.random())])
 }
+var toAdd = {
+	title : "https://en.wikipedia.org/wiki/" + title,
+	id : num, 
+	links : linksReal
+}
+
+
+var toAdd2 = {
+	title : title
+}
+
+
 
 
 var getCache()
@@ -84,6 +102,10 @@ alert(localStorage.cumVar);
 
 
 window.onbeforeunload = function() {
+	var currentPage = window.location.href;
+	currentPage = currentPage.substring(currentPage.indexOf("/wiki/") + 6);
+	var readFile("./interest.json", currentPage);
+
     return "I hope you were mentally stimulated by this Wikipedia page!";
 };
 
@@ -112,4 +134,10 @@ var relatedButton = function(completeList)
 var getGood = function(completeList)
 {
 	return completeList.slice(0,20);
+}
+
+
+var getUrl = function()
+{
+	return window.location.href;
 }
