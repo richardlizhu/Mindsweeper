@@ -1,5 +1,5 @@
-var width = window.screen.availHeight,
-    height = window.screen.availWidth;
+var width = window.screen.width,
+    height = window.screen.height;
 
 var force = d3.layout.force()
     .size([width, height])
