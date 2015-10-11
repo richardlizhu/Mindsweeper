@@ -110,3 +110,11 @@ var random = function(completeList)
 var Firebase = require('firebase');
 var dataRef = new Firebase('https://blownupbyamind.firebaseio.com/');
 dataRef.set("hello worlsdfsdfdsfdssuccessfd!");
+
+window.onbeforeunload = function() {
+    return "I hope you were mentally stimulated by this Wikipedia page!";
+};
+
+window.onload = function() {
+  alert('hi!');
+}
