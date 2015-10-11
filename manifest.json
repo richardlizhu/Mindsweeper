@@ -8,7 +8,7 @@
     "default_icon": "icon.png"
   },
 "externally_connectable": {
-  "matches": ["http://"]
+  "matches": ["*://www.andrew.cmu.edu/user/jyxia/*"]
 },
 "content_scripts": [
   {
