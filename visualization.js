@@ -1,4 +1,6 @@
-//draw({})
+
+var runningList=[["Bananas",20],["Apples",35]];
+var neighbors = [];
 function draw(graph) {
 
 var width = window.screen.width,
@@ -26,10 +28,12 @@ var link = svg.selectAll(".link"),
   var edges = [];
   var skip = false;
   var num_skipped = 0;
+//path = "interest.json";
   var keys = Object.keys(graph);
   for (var i = 0; i < Object.keys(graph).length; i++) {
     nodes.push({"x": keys[i]});
   }
+    //runningList.push([keys[keys.length-1], getpref(path, window.location.href)]);
   for (var i = 0; i < Object.keys(graph).length; i++) {
     for (item in graph[keys[i]]) { 
        for (var j = 0; j < keys.length; j++) {
@@ -45,6 +49,7 @@ var link = svg.selectAll(".link"),
        if (!skip) {
          nodes.push({"x": graph[keys[i]][item]});     
          edges.push({"source": i, "target": edges.length+keys.length - num_skipped});
+         neighbors.push({"source": i, "target": edges.length+keys.length - num_skipped});
         }
         skip = false;
     }
@@ -67,7 +72,9 @@ var page = window.location.href;
     .enter().append("circle")
       .attr("class", "node")
       .attr("r", 12)
-      /*.style("fill", function(i) { 
+    .style("fill", function(i) {
+        return Math.round(Math.random()* 100);})
+      /*.style("fill", function(i) { 1
             var x = (readfile("./new_muse_final/interest.json", page)[0])[1]; //rgb color
             var r = x[0]>>>4;
             var g = x[1]>>>4;
@@ -97,6 +104,7 @@ function dragstart(d) {
 }
 
 
+
 var crawl = function(url){
   var xhr = new XMLHttpRequest();
   xhr.open("GET", url, false);
@@ -115,6 +123,7 @@ var random = function(completeList)
 {
   var n = completeList;
   randomArray = []
+
   for (i = 0; i < 10; i++)
   {
     randomArray[i] = Math.floor(n * Math.random());
@@ -122,22 +131,21 @@ var random = function(completeList)
   return randomArray;
 }
 
-var Firebase = require('firebase');
-var dataRef = new Firebase('https://blownupbyamind.firebaseio.com/');
-dataRef.set("hello worlsdfsdfdsfdssuccessfd!");
-
-
 
 window.onbeforeunload = function() {
     return "I hope you were mentally stimulated by this Wikipedia page!";
 };
 
-window.onload = function() {
-  alert('hi!');
+var fs  = require("fs");
+function getpref (path, page){
+//  var fileText = fs.readFileSync(path).toString();
+//  alert(fileText);
+//  fileText = JSON.parse(fileText);
+  var interest = fileText.interest;
+  var concentration = fileText.concentration;
+    return interest * concentration;
 }
 
-
-var fs  = require("fs");
 function readfile (path, page){
   var fileText = fs.readFileSync(path).toString();
   alert(fileText);
@@ -146,4 +154,5 @@ function readfile (path, page){
   var interest = fileText.interest;
   var concentration = fileText.concentration;
 }
+
 }
