@@ -24,6 +24,13 @@ else
 } 
 
 
+var database = [];
+var cumulator = 0;
+
+window.onload = function() {
+  
+}
+
 var crawlUrl = window.location.href;
 crawlUrl = crawlUrl.substring(crawlUrl.lastIndexOf("/")+1);
 crawlUrl = "https://en.wikipedia.org/w/api.php?action=query&titles=" + crawlUrl + "&prop=links&pllimit=max&rvprop=content&format=json";
@@ -54,7 +61,20 @@ var toAdd = {
 	id : num, 
 	links : links
 }
-//myFirebaseRef.set(toAdd);
+
+
+alert(localStorage.cumVar);
+if(localStorage.cumVar)
+{
+	alert("cumvar");
+	localStorage.cumVar.push("@$^^#%$%$#&"+toAdd);
+}
+else
+{
+	alert("no cumvar");
+	localStorage.cumVar = JSON.stringify(toAdd);
+}
+alert(localStorage.cumVar);
 
 
 
