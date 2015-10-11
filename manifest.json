@@ -3,9 +3,16 @@
   "version": "1.0",
   "description": "Browse Wikipedia with Intelligence.",
   "manifest_version": 2,
+  "icons": { "16": "Images/MindSweeperLogoSolid.png",
+           "48": "Images/MindSweeperLogoSolid.png",
+          "128": "Images/MindSweeperLogoSolid.png" },
 "externally_connectable": {
   "matches": ["*://www.andrew.cmu.edu/user/jyxia/*"]
 },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": "Images/MindSweeperLogoSolid.png"
+  },
 "content_scripts": [
   {
     "matches": [
