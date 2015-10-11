@@ -64,7 +64,7 @@ for (i=1;i<jsonArray.length;i++)
 
 
 var linksReal = [];
-for (i=0;i<50; i++)
+for (i=0;i<20; i++)
 {
 	linksReal.push(links[Math.floor(links.length*Math.random())])
 }
@@ -72,7 +72,7 @@ var toAdd = {
 
 	title : title,
 	//id : num, 
-	links : linksReal
+	links : links
 };
 
 

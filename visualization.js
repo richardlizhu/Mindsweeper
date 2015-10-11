@@ -72,8 +72,8 @@ var page = window.location.href;
     .enter().append("circle")
       .attr("class", "node")
       .attr("r", 12)
-    .style("fill", function(i) {
-        return Math.round(Math.random()* 100);})
+    //.style("fill", function(i) {
+        //return Math.round(Math.random()* (1<<20));}
       /*.style("fill", function(i) { 1
             var x = (readfile("./new_muse_final/interest.json", page)[0])[1]; //rgb color
             var r = x[0]>>>4;
