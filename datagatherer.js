@@ -2,7 +2,7 @@ var stringJSON;
 
 function getData() {
 // The ID of the extension we want to talk to.
-var editorExtensionId = "abcdefghijklmnoabcdefhijklmnoabc";
+var editorExtensionId = "pfjicihngnbhjmjafeomgmennngngeio";
 
 // Make a simple request:
 chrome.runtime.sendMessage(editorExtensionId, {openUrlInEditor: url},
