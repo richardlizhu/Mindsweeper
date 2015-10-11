@@ -119,10 +119,11 @@ var randomR = function(listOfNeighbors)
 }
 
 
-var relatedButton = function(listOfNeighbors, runningList)
+var relatedButton = function(listOfNeighbors, runningList, callback)
 {
 	randomArray = randomR(listOfNeighbors);
-	functionForRichard(randomArray, getGood(runningList), function(answer) { alert(answer)}) ;
+	result = functionForRichard(randomArray, getGood(runningList), function(answer) { return(answer)}) ;
+	callback(result);
 }
 
 
