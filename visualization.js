@@ -17,7 +17,8 @@ var svg = d3.select("body").append("svg")
 var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
-graph = {"a" : ["c","d","e"], "b":["a","g","h"]};
+graphs = stringJSON.split("&$^^#%$%$#&"); //"{"a" : ["c","d","e"], "b":["a","g","h"]};
+graph = JSON.parse(graphs);
   var nodes = [];
   var edges = [];
   var skip = false;
