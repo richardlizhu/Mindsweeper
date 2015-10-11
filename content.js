@@ -107,13 +107,13 @@ window.onbeforeunload = function() {
 
 
 
-var randomR = function(completeList)
+var randomR = function(listOfNeighbors)
 {
-	var n = completeList;
-	randomArray = []
+	var n = listOfNeighbors.length;
+	randomArray = [];
 	for (i = 0; i < 10; i++)
 	{
-		randomArray[i] = Math.floor(n * Math.random());
+		randomArray.push( listOfNeighbors[Math.floor(n * Math.random())] );
 	
 }	return randomArray;
 }
@@ -135,4 +135,8 @@ var getGood = function(listOfVisitedNodes)
 var getUrl = function()
 {
 	return window.location.href;
+}
+
+var sortByPref = function(runningList){
+	runningList.sort( function(x, y){ return y[1] - x[1] } )
 }
