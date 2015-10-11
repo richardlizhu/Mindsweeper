@@ -8,7 +8,7 @@
     "default_icon": "icon.png"
   },
 "externally_connectable": {
-  "matches": ["*://*.mindsweepr.com/*"]
+  "matches": ["http://"]
 },
 "content_scripts": [
   {
