@@ -1,4 +1,4 @@
-draw({})
+//draw({})
 function draw(graph) {
 
 var width = window.screen.width,
@@ -21,7 +21,7 @@ var link = svg.selectAll(".link"),
     node = svg.selectAll(".node");
 
 //graphs = stringJSON.split("&$^^#%$%$#&");
-graph = /*JSON.parse(graphs);*/{"a" : ["c","d","e"], "b":["a","g","h"]};
+//graph = /*JSON.parse(graphs);*/{"a" : ["c","d","e"], "b":["a","g","h"]};
   var nodes = [];
   var edges = [];
   var skip = false;
