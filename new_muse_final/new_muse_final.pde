@@ -290,10 +290,10 @@ void oscEvent(OscMessage theOscMessage) {
       GammaInit = ingamma / 100;
       LBetaInit = inLbeta / 100;
       LGammaInit = inLgamma / 100;
-      print(BetaInit);
-      print(GammaInit);
-      print(LBetaInit);
-      print(LGammaInit);
+      print(BetaInit," ");
+      print(GammaInit," ");
+      print(LBetaInit," ");
+      print(LGammaInit,"\n");
       foundInits = true;
     }
   
