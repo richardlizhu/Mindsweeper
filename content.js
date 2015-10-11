@@ -3,6 +3,7 @@
 //var dataRef = new Firebase('https://blownupbyamind.firebaseio.com/');
 //dataRef.set("hello world!");
 
+
 var crawl = function(url)
 {
 var xhr = new XMLHttpRequest();
@@ -20,7 +21,7 @@ else
 {
 	return (result);
 }
-}
+} 
 
 
 var crawlUrl = window.location.href;
