@@ -63,6 +63,14 @@ var toAdd = {
 }
 
 
+var getCache()
+{
+	var tempLocal = localStorage.cumVar;
+	localStorage.clear();
+	return tempLocal;
+}
+
+
 alert(localStorage.cumVar);
 if(localStorage.cumVar)
 {
@@ -94,3 +102,4 @@ var random = function(completeList)
 	}
 	return randomArray;
 }
+
