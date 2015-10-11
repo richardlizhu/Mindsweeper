@@ -119,16 +119,21 @@ var randomR = function(listOfNeighbors)
 }
 
 
-var relatedButton = function(listOfNeighbors, listOfVisitedNodes)
+var relatedButton = function(listOfNeighbors, runningList)
 {
 	randomArray = randomR(listOfNeighbors);
-	functionForRichard(randomArray, getGood(listOfVisitedNodes), function(answer) { alert(answer)}) ;
+	functionForRichard(randomArray, getGood(runningList), function(answer) { alert(answer)}) ;
 }
 
 
-var getGood = function(listOfVisitedNodes)
+var getGood = function(runningList)
 {
-	return listOfVisitedNodes.slice(0,5);
+	var listOfGoodTitles = [];
+	var sample = runningList.slice(0,5);
+	for (var i = 0; i < 5; i++){
+		listOfGoodTitles.push(runningList[i][0]);
+	}
+	return listOfGoodTitles;
 }
 
 
