@@ -114,7 +114,7 @@ var crawl = function(url){
 var random = function(completeList)
 {
   var n = completeList;
-  randomArray = []
+  randomArray = []     
   for (i = 0; i < 10; i++)
   {
     randomArray[i] = Math.floor(n * Math.random());
@@ -145,5 +145,4 @@ function readfile (path, page){
   return ({page: colorCreate(fileText)});
   var interest = fileText.interest;
   var concentration = fileText.concentration;
-}
 }
